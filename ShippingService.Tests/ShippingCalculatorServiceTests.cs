@@ -13,15 +13,16 @@ namespace ShippingService.Tests
 {
     public class ShippingCalculatorServiceTests
     {
-        [Fact]
-        public void CalculateShippingCost_ReturnsExpectedCost()
+        [Theory]
+        [ClassData(typeof(MyTestData))]
+        public void CalculateShippingCost_ReturnsExpectedCost(Order order)
         {
             // Arrange
             var mockShippingCalculator = new Mock<IShippingCalculator>();
             mockShippingCalculator.Setup(x => x.CalculateShippingCost(It.IsAny<Order>())).Returns(20.0);
 
             var shippingService = new ShippingCalculatorService(mockShippingCalculator.Object);
-            var order = new Order { Total = 100, Destination = "USA" };
+            //var order = new Order { Total = 100, Destination = "USA" };
 
             // Act
             var result = shippingService.CalculateShippingCost(order);
