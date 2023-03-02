@@ -22,7 +22,7 @@ namespace ShippingService.Tests
             mockShippingCalculator.Setup(x => x.CalculateShippingCost(It.IsAny<Order>())).Returns(20.0);
 
             var shippingService = new ShippingCalculatorService(mockShippingCalculator.Object);
-            //var order = new Order { Total = 100, Destination = "USA" };
+            //var order = new Order { Total = 100, Destination = "Asia" };
 
             // Act
             var result = shippingService.CalculateShippingCost(order);
